@@ -15,3 +15,10 @@ d3.json("http://api.cropcompass.org/data/subsidy_dollars", function(error, json)
   dataset = json;
   // console.log(dataset);
 });
+
+d3.select("#content")
+  .selectAll("div")
+    .data(dataset)
+  .enter().append("div")
+    .style("width", function(d) { return d.subsidy_dollars + "px"; })
+    .text(function(d) { return d; });
