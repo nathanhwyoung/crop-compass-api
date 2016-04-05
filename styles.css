@@ -1,0 +1,24 @@
+body {
+  padding-top: 50px;
+  padding-left: 100px;
+}
+#content {
+  width: 800px;
+  height: 500px;
+  background-color: #F2F9FC;
+}
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+g {
+  font-family: Lato;
+  font-size: 12px;
+}
+.line {
+  stroke: cornflowerBlue;
+  stroke-width: 1px;
+  fill: none;
+}
