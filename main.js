@@ -13,12 +13,12 @@ var dataset;
 d3.json("http://api.cropcompass.org/data/subsidy_dollars", function(error, json) {
   if (error) return console.warn(error);
   dataset = json;
-  // console.log(dataset);
+  console.log(dataset);
 });
 
-d3.select("#content")
-  .selectAll("div")
-    .data(dataset)
-  .enter().append("div")
-    .style("width", function(d) { return d.subsidy_dollars + "px"; })
-    .text(function(d) { return d; });
+// d3.select("#content")
+//   .selectAll("div")
+//     .data(dataset)
+//   .enter().append("div")
+//     .style("width", function(d) { return d.subsidy_dollars + "px"; })
+//     .text(function(d) { return d; });
