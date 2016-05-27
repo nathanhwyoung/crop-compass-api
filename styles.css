@@ -1,4 +1,4 @@
-body {
+/*body {
   padding-top: 50px;
   padding-left: 100px;
 }
@@ -21,4 +21,13 @@ g {
   stroke: cornflowerBlue;
   stroke-width: 1px;
   fill: none;
+}*/
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
 }
