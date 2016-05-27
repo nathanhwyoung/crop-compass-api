@@ -5,7 +5,7 @@ var margin = {
     left: 70
 }
 
-// WE NEED TOP CROPS BY ACRES
+// WE NEED TOP CROPS BY ACRES FOR EACH COUNTY
 
 var width = 1000 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
