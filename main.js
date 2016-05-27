@@ -1,45 +1,55 @@
-// var margin = {
-//   top: 20,
-//   right: 50,
-//   bottom: 30,
-//   left: 70
-// }
-//
-// var width = 1000 - margin.left - margin.right;
-// var height = 500 - margin.top - margin.bottom;
-//
-// var dataset;
-//
-// d3.json("http://api.cropcompass.org/data/subsidy_dollars", function(error, json) {
-//   if (error) return console.warn(error);
-//   dataset = json;
-//   console.log(dataset);
-// });
+var margin = {
+    top: 20,
+    right: 50,
+    bottom: 30,
+    left: 70
+}
 
-// d3.select("#content")
-//   .selectAll("div")
-//     .data(dataset)
-//   .enter().append("div")
-//     .style("width", function(d) { return d.subsidy_dollars + "px"; })
-//     .text(function(d) { return d; });
+// WE NEED TOP CROPS BY ACRES
 
-//begin script when window loads
-window.onload = initialize();
+var width = 1000 - margin.left - margin.right;
+var height = 500 - margin.top - margin.bottom;
 
-//the first function called once the html is loaded
-function initialize() {
-    setMap();
-};
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-//set choropleth map parameters
-function setMap() {
-    //use queue.js to parallelize asynchronous data loading
-    queue()
-        // .defer(d3.csv, “data / unitsData.csv”) //load attributes from csv
-        .defer(d3.json, “data / oregon.topojson”) //load
-        .await(callback); //trigger callback function once data is loaded
+	var countyName = "Washington";
 
-    function callback(error, csvData, europeData, franceData) {
-        console.log();
-    };
+queue()
+    .defer(d3.json, "http://api.cropcompass.org/data/nass_commodity_area?region=" + countyName, function(d) {
+		d.data.sort(function(a,b) {
+			return b.acres - a.acres;
+		})
+
+		console.log(d.data[0].commodity + " " +
+					d.data[1].commodity + " " +
+					d.data[2].commodity + " " +
+					d.data[3].commodity + " " +
+					d.data[4].commodity);
+
+        // console.log(d.data[0].region);
+
+		// for(var i=0; i<d.data.length; i++) {
+		// 	console.log(d.data[i]);
+		// }
+
+
+
+    })
+    // .defer(d3.json, "http://api.cropcompass.org/data/nass_animals_inventory?commodity="+commodity, function(d) {
+    // 	for(var i=0; i<d.length; i++) {
+    // 		var
+    // 	}
+    // 	console.log(d.data[0].animals)
+    //     map.set(d.id, +d.rate);
+    // })
+    .await(ready);
+
+function ready(error, crops) {
+    if (error) throw error;
+
+
 }
