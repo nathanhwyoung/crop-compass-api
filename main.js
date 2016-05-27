@@ -16,7 +16,7 @@ var svg = d3.select("body").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	var countyName = "Washington";
+	var countyName = "Hood River";
 
 queue()
     .defer(d3.json, "http://api.cropcompass.org/data/nass_commodity_area?region=" + countyName, function(d) {
