@@ -1,4 +1,4 @@
-var width = 800;
+var width = 1000;
 var height = 500;
 //
 // var svg = d3.select("body").append("svg")
@@ -7,7 +7,7 @@ var height = 500;
 //     .append("g");
 // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var countyName = "Washington";
+var countyName = "Multnomah";
 // var countyName = document.getElementById('countySelect');
 
 d3.json("http://api.cropcompass.org/data/nass_commodity_area?region=" + countyName, function(d) {
@@ -58,9 +58,9 @@ d3.json("http://api.cropcompass.org/data/nass_commodity_area?region=" + countyNa
 		.style("background-color", function(d) {
 			return colorScale(d.acres);
 		})
-        // .text(function(d) {
-        //     return d.commodity;
-        // });
+        .text(function(d) {
+            return d.commodity;
+        });
 
     // var bars = svg.selectAll("div")
     //     .data(dataset)
