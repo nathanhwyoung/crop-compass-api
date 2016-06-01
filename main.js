@@ -1,4 +1,4 @@
-var width = 1000;
+var width = 800;
 var height = 500;
 //
 // var svg = d3.select("body").append("svg")
@@ -20,11 +20,14 @@ d3.json("http://api.cropcompass.org/data/nass_commodity_area?region=" + countyNa
 
     // THESE VALUES WILL NEED TO BE PLAYED WITH
     var xScale = d3.scale.linear()
-        .domain([0, d3.max(dataset, function(d) { return d3.max(d.acres); })])
+        .domain([0, d3.max(dataset, function(d){
+			return d.acres;
+		})])
         .range([0, width]);
 
-		console.log(d3.max(dataset));
-		console.log(dataset);
+		// console.log(d3.max(dataset));
+		// console.log(dataset);
+		// console.log(xScale);
 
     // var yScale = d3.scale.linear()
     //     .domain([0, dataset.length])
@@ -49,12 +52,15 @@ d3.json("http://api.cropcompass.org/data/nass_commodity_area?region=" + countyNa
         //     return xScale(d.acres) + "px";
         // })
 		.style("width", function(d) {
+			console.log(d.acres);
             return xScale(d.acres) + "px";
         })
-		.style("background-color", function(d) { return colorScale(d.acres); })
-        .text(function(d) {
-            return d.commodity;
-        });
+		.style("background-color", function(d) {
+			return colorScale(d.acres);
+		})
+        // .text(function(d) {
+        //     return d.commodity;
+        // });
 
     // var bars = svg.selectAll("div")
     //     .data(dataset)
